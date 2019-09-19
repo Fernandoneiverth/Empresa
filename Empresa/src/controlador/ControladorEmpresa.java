@@ -25,9 +25,6 @@ public class ControladorEmpresa {
         Empresa objeto = new Empresa();
         objeto.setRazao_social(man.jtfRazao_social.getText());
         objeto.setNome_fantasia(man.jtfNome_fantasia.getText());
-                objeto.setFundacao(man.jtfFundacao.getText());
-                                objeto.setHorarioabertura(man.jtfHorarioabertura.getText());
-
         boolean resultado = DaoEmpresa.inserir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Inserido com sucesso!");

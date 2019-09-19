@@ -20,13 +20,11 @@ import java.util.List;
 public class DaoEmpresa {
 
     public static boolean inserir(Empresa objeto) {
-        String sql = "INSERT INTO Empresa (razao_social, nome_fantansia, fundacao, horarioabertura) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Empresa (razao_social, nome_fantansia) VALUES (?, ?)";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getRazao_social());
             ps.setString(2, objeto.getNome_fantasia());
-            ps.setString(3, objeto.getFundacao());
-            ps.setString(4, objeto.getHorarioabertura());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -36,13 +34,11 @@ public class DaoEmpresa {
     }
 
     public static boolean alterar(Empresa objeto) {
-        String sql = "UPDATE Empresa SET razao_social = ?, nome_fantansia = ?, fundacao = ?, horarioabertura = ? WHERE codigo=?";
+        String sql = "UPDATE Empresa SET razao_social = ?, nome_fantansia = ? WHERE codigo=?";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getRazao_social());
             ps.setString(2, objeto.getNome_fantasia());
-            ps.setString(3, objeto.getFundacao());
-            ps.setString(4, objeto.getHorarioabertura());
             ps.setInt(3, objeto.getCodigo());
             ps.executeUpdate();
             return true;
